@@ -1,0 +1,100 @@
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        max-width: 600px;
+        background: #fff;
+        margin: 40px auto;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .gender-option{
+        display: flex;
+        margin-top: 5px;
+        gap: 10px;
+        font-size: 14px;
+    }
+
+    .gender-option label{
+        display: flex;
+        padding: 10px;
+    }
+
+    .gender-option input{
+        margin-right: 5px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    p {
+        text-align: center;
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin-top: 15px;
+        color: #444;
+    }
+
+    input,
+    textarea {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        outline: none;
+        font-size: 14px;
+    }
+
+    textarea {
+        resize: none;
+        height: 90px;
+    }
+
+    .stars {
+        display: flex;
+        gap: 5px;
+        font-size: 22px;
+        margin-top: 8px;
+        cursor: pointer;
+    }
+
+    .stars i {
+        color: #ccc;
+    }
+
+    .stars i.active {
+        color: gold;
+    }
+
+    button {
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 12px;
+        width: 100%;
+        margin-top: 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    button:hover {
+        background: #218838;
+    }

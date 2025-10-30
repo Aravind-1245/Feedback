@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Your Review</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="index.css">
+    <link href="http://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>We Value Your Feedback</h1>
+        <p>Your review helps us improve and serve you better.</p>
+
+        <form id="reviewForm" method="post" action="#">
+            <label>Name:</label>
+            <input type="text" name="name" required>
+
+            <label>Email:</label>
+            <input type="email" name="email" required>
+
+            <label>Phone Number:</label>
+            <input type="tel" name="phone" required>
+
+            <label>Gender:</label>
+            <div class="gender-option">
+                <label><input type="radio" name="gender" value="Male">Male</label>
+                <label><input type="radio" name="gender" value="Female">Female</label>
+                <label><input type="radio" name="gender" value="Other">Other</label>
+            </div>
+
+            <label>Review:</label>
+            <textarea name="review" required></textarea>
+
+            <label>Rating:</label>
+            <div class="stars" id="starRating">
+                <i class="fa-solid fa-star" data-value="1"></i>
+                <i class="fa-solid fa-star" data-value="2"></i>
+                <i class="fa-solid fa-star" data-value="3"></i>
+                <i class="fa-solid fa-star" data-value="4"></i>
+                <i class="fa-solid fa-star" data-value="5"></i>
+            </div>
+            <input type="hidden" name="rating" id="ratingValue" required>
+
+            <button type="submit">Submit Review</button>
+        </form>
+    </div>
+
+    <script>
+        // Star rating logic
+        const stars = document.querySelectorAll('#starRating i');
+        const ratingValue = document.getElementById('ratingValue');
+
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                stars.forEach(s => s.classList.remove('active'));
+                star.classList.add('active');
+                let value = star.getAttribute('data-value');
+                ratingValue.value = value;
+                for (let i = 0; i < value; i++) {
+                    stars[i].classList.add('active');
+                }
+            });
+        });
+
+        // SweetAlert on form submit
+        document.getElementById('reviewForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Stop normal submit
+
+            if (!ratingValue.value) {
+                swal("Oops!", "Please select a rating before submitting.", "error");
+                return;
+            }
+
+            swal({
+                title: "Thank You!",
+                text: "Your review has been submitted successfully.",
+                icon: "success",
+                button: "OK"
+            }).then(() => {
+                this.submit(); // Now submit to backend
+            });
+        });
+    </script>
+
+</body>
+
+</html>
